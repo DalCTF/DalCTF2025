@@ -1,0 +1,21 @@
+
+name: "Dancing Fragments"
+attribution: "Written by lorg"
+category: Misc
+description: In the distance you see a figure moving erratically... as you approach you realize he's dancing! He appears to be trapped deep inside the game's data, his body pixelated and glitching right before your eyes. Fragments of data are flying in all directions as he dances, It doesn't seem like he can talk, but you think he's trying to send you a message? Art by [MXJfiles](https://pixabay.com/users/mxjfiles-41050463/)
+value: 100
+type: standard
+
+flags:
+    # A static case sensitive flag
+    - dalctf{g0tt4_G0TT4_cUt_L0OsE}
+
+topics:
+    - steganography
+
+files:
+    - dist/dancing-fragments.gif
+
+state: visible
+
+version: "0.1"

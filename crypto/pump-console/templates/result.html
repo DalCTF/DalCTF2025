@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Execution Result</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #111;
+            color: #33ff33;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #33ff33;
+        }
+        pre {
+            background-color: #222;
+            padding: 10px;
+            border: 1px solid #444;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .container {
+            border: 1px solid #33ff33;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #222;
+            color: #33ff33;
+            border: 1px solid #33ff33;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #33ff33;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+    <h1>--- ENCOM OS/12 MasterControl Console ---</h1>
+    <h2>--- Execution Results ---</h2>
+
+    <div class="container">
+        <h2>Status: {{ status }}</h2>
+        <h3>Output:</h3>
+        <pre>{{ execution_result }}</pre>
+        
+        <button onclick="window.location.href='/'">Back to Console</button>
+    </div>
+</body>
+</html>

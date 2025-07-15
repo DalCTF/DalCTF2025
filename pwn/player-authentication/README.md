@@ -1,0 +1,3 @@
+## Description
+
+In your quest for the game developers long lost defense mechanisms, you find an entry to a blue neon facility, on the edges of the game city. You wander in, thinking this must be where the defense mechanisms are located. And you are right!! But the problem is that there is a giant cannon pointed at you asking for you to verify yourself as one of the game developers or else ... Can you fool it?

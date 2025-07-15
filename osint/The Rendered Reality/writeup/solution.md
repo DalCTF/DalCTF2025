@@ -1,0 +1,1 @@
+Flag: dalctf{barrington_street}

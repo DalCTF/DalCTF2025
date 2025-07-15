@@ -1,0 +1,6 @@
+services:
+  ratscrewalgorithm:
+    build: .
+    ports:
+      - "6002:6002"
+    restart: unless-stopped

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Firewall Node</title>
+  <style>
+    body {
+      background-color: #0c0e14;
+      color: #86c0d7;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    .container {
+      background-color: rgba(16, 24, 40, 0.9);
+      border: 1px solid #00a8ff;
+      border-radius: 5px;
+      padding: 40px;
+      box-shadow: 0 0 15px #00a8ff, inset 0 0 15px #00a8ff;
+      width: 400px;
+      position: relative;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00a8ff;
+      text-shadow: 0 0 5px #00a8ff;
+    }
+    
+    .status-indicator {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 10px;
+      background-color: #1e2536;
+      border: 1px solid #00a8ff;
+      border-radius: 3px;
+    }
+    
+    .status-indicator .label {
+      font-weight: bold;
+    }
+    
+    .status-indicator .value {
+      color: #ff3c3c;
+      font-weight: bold;
+    }
+    
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    button {
+      padding: 12px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    
+    button:hover {
+      background-color: #00a8ff;
+      box-shadow: 0 0 10px #00a8ff;
+    }
+    
+    #status {
+      margin-top: 20px;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      min-height: 20px;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      color: #0f0;
+      text-shadow: 0 0 3px #0f0;
+    }
+    
+    .log-terminal {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #1e2536;
+      border: 1px solid #00a8ff;
+      border-radius: 3px;
+      height: 80px;
+      overflow: auto;
+      font-size: 12px;
+      color: #86c0d7;
+    }
+    
+    .grid-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(0deg, transparent 24%, rgba(0, 168, 255, 0.05) 25%, rgba(0, 168, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 168, 255, 0.05) 75%, rgba(0, 168, 255, 0.05) 76%, transparent 77%, transparent),
+                  linear-gradient(90deg, transparent 24%, rgba(0, 168, 255, 0.05) 25%, rgba(0, 168, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 168, 255, 0.05) 75%, rgba(0, 168, 255, 0.05) 76%, transparent 77%, transparent);
+      background-size: 50px 50px;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="container">
+    <h1>Firewall Override Interface</h1>
+    <div class="status-indicator">
+      <span class="label">Node Status:</span>
+      <span class="value">LOCKED</span>
+    </div>
+    
+    <div class="controls">
+      <button onclick="attemptServerOverride()">Server Override</button>
+    </div>
+    
+    <p id="status">Awaiting input...</p>
+    
+    <div class="log-terminal" id="logTerminal">
+      > System initialized
+      > Firewall active
+      > Access restricted
+    </div>
+  </div>
+
+  <script>
+    function log(message) {
+      const logTerminal = document.getElementById("logTerminal");
+      // Clear previous logs before adding new ones
+      logTerminal.innerHTML = "> System initialized<br>> Firewall active<br>> Access restricted";
+      logTerminal.innerHTML += "<br>> " + message;
+      logTerminal.scrollTop = logTerminal.scrollHeight;
+    }
+    
+    function attemptServerOverride() {
+      log("Sending override request to server...");
+      
+      fetch('/api/firewall/override', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({})
+      })
+      .then(response => response.json())
+      .then(data => {
+        const statusElement = document.getElementById("status");
+        // Check if the message contains successful flag or access denied
+        if (data.message.includes("dalctf{") ) {
+          // Flag found - show in green
+          statusElement.style.color = "#00ff00";  // Bright green
+          statusElement.style.textShadow = "0 0 5px #00ff00"; // Add glow effect
+        } else if (data.message.includes("Access Denied")) {
+          // Access denied - show in red
+          statusElement.style.color = "#ff3c3c";  // Red
+          statusElement.style.textShadow = "0 0 5px #ff3c3c"; // Add glow effect
+        } else {
+          // Other messages - reset to default
+          statusElement.style.color = "#0f0";
+          statusElement.style.textShadow = "0 0 3px #0f0";
+        }
+        statusElement.innerText = data.message;
+        log(data.log || "Server response received");
+      })
+      .catch(error => {
+        const statusElement = document.getElementById("status");
+        statusElement.style.color = "#ff3c3c";  // Red for errors
+        statusElement.innerText = "Connection Error";
+        log("Error: " + error.message);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Rat Screw Algorithm"
+attribution: "Written by lorg"
+category: Crypto
+connection_info: nc 107.191.48.172 6002
+description: "As you fight your way through the game, you find yourself trudging through terrain that seems a lot like a desert. You look down, and come across a wrinkled .py file covered in sand. It seems to be a shred of the source code from some larger process.
+
+You keep walking, and after a while you come across a looming Sphinx. She says she is guarding the secrets of the Rat Screw Tomb. Can you figure out how to get past her?"
+value: 300
+type: standard
+
+flags:
+    # A static case sensitive flag
+    - dalctf{1n_Th3_Ph4ra0hs_t0mb_or_Wh4t3vEr}
+    - {
+        type: "static",
+        content: "dalctf{1n_Th3_Ph4ra0hs_t0mb_or_Wh4t3vEr}",
+        data: "case_insensitive",
+    }
+
+files: 
+    - dist/RatScrew.py
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+
+
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

@@ -1,0 +1,28 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Subtle Eavesdropping"
+author: "lorg"
+category: Forensics
+description: You managed to intercept this traffic from some of the developers. Maybe they were transmitting some secret information?
+attribution: Written by lorg
+value: 100
+type: standard
+
+# Can be removed if unused
+# Accepts strings or dictionaries of CTFd API data
+flags:
+    # A static case sensitive flag
+    - dalctf{s0Me0n3_1s_L1sTeNInG??}
+    - {
+        type: "static",
+        content: "dalctf{s0Me0n3_1s_L1sTeNInG??}",
+        data: "case_insensitive",
+    }
+topics:
+    - pcap forensics
+
+files:
+    - dist/SubtleEavesdropping.pcap
+version: "0.1"

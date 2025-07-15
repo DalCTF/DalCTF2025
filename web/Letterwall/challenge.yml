@@ -1,0 +1,33 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Letterwall"
+attribution: "Written by Potatonator"
+category: Web
+connection_info: http://107.191.48.172:8004
+description: As you walk around the game, you find a weird wall full of letters. They seem completely random, or are they?
+value: 400
+type: standard
+
+flags:
+    # A static case sensitive flag
+    - dalctf{why_d0_w3_3v3n_h4v3_jwts?}
+    - {
+        type: "static",
+        content: "dalctf{why_d0_w3_3v3n_h4v3_jwts?}",
+        data: "case_insensitive",
+    }
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

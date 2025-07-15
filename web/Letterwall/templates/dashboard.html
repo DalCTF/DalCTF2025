@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Letterwall{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold">Welcome, {{ username }}!</h2>
+    <button onclick="logout()"
+      class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+      Logout
+    </button>
+  </div>
+
+  <div class="bg-white rounded-lg shadow-md p-8 overflow-x-auto">
+    <div class="grid place-items-center">
+      <div class="font-mono text-lg" style="letter-spacing: 0.5em; line-height: 1.5;">
+        {% for row in grid %}
+        <div class="text-center">
+          {% for cell in row %}<span class="{{ cell.class }}">{{ cell.letter }}</span>{% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Handle logout
+  async function logout() {
+    try {
+      const response = await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        window.location.href = '/';
+      } else {
+        alert('Logout failed');
+      }
+    } catch (error) {
+      alert('An error occurred during logout');
+    }
+  }
+
+  // Add credentials to all fetch requests
+  const originalFetch = window.fetch;
+  window.fetch = function (url, options = {}) {
+    return originalFetch(url, {
+      ...options,
+      credentials: 'same-origin',
+      headers: {
+        ...options.headers,
+        'Content-Type': 'application/json'
+      }
+    });
+  };
+
+  // Function to get next letter in alphabet
+  function getNextLetter(letter) {
+    letter = letter.toUpperCase();
+    return letter === 'Z' ? 'A' : String.fromCharCode(letter.charCodeAt(0) + 1);
+  }
+
+  // Function to update random letters
+  function updateRandomLetters() {
+    const spans = document.querySelectorAll('span.q');
+    spans.forEach(span => {
+      const currentLetter = span.textContent;
+      span.textContent = getNextLetter(currentLetter);
+    });
+  }
+
+  // Start the interval when page loads
+  setInterval(updateRandomLetters, 2000);
+</script>
+{% endblock %}

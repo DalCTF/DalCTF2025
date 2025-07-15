@@ -1,0 +1,6 @@
+services:
+  armoury:
+    build: .
+    ports:
+      - "7004:1337"
+    restart: unless-stopped

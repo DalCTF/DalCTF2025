@@ -1,0 +1,1 @@
+When connecting you will spawn your own tmux session. Inside of the challenge there are multiple windows and panes. The flag is located at the second window, on a minimized pane. Therefore the user needs to move to that window and then type Ctrl+A + z to unzoom. After unzooming, the pane that shows up is just a Vim window. By exiting vim user can get the flag

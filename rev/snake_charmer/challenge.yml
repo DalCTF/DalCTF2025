@@ -1,0 +1,35 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Snake Charmer"
+attribution: "Written by kvasir"
+category: Rev
+description: Don't move too quickly! There is a huge talking snake right in front of you! Luckily, it's source code is actually visible. Can you figure out how it thinks, charm it's tail off and get a new flag?
+value: 200
+type: standard
+
+flags:
+    # A static case sensitive flag
+    - dalctf{br41n_d34d}
+    - {
+        type: "static",
+        content: "dalctf{br41n_d34d}",
+        data: "case_insensitive",
+    }
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+
+files:
+  - dist/snake_brain.py
+
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

@@ -1,0 +1,33 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "The MUltipleXer"
+attribution: "Written by kvasir"
+category: Misc
+connection_info: ssh ctf-player@107.191.48.172 -p 9002
+description: While looking for some flags you found an old computer terminal that looks like it belonged to the developer of the game. You try to test it out but it seems that the developer utilized a weird setup and you are not really sure how to get this working. Can you figure it out and find the hidden secret? Connect with user ctf-player and password 'password'
+value: 200
+type: standard
+
+flags:
+    # A static case sensitive flag
+    - dalctf{v1m_4nd_7mux_f7w}
+    - {
+        type: "static",
+        content: "dalctf{v1m_4nd_7mux_f7w}",
+        data: "case_insensitive",
+    }
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

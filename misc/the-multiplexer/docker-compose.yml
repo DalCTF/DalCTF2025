@@ -1,0 +1,6 @@
+services:
+  tmux:
+    build: .
+    ports:
+      - "9002:2222"
+    restart: unless-stopped

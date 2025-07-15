@@ -1,0 +1,31 @@
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "8005:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+      - FLASK_DEBUG=0
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=movie_reviews
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    command: gunicorn --bind 0.0.0.0:5000 app:app
+    restart: unless-stopped
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

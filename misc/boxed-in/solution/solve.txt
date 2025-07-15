@@ -1,0 +1,3 @@
+The challenge itself is just a python jail. There is multiple ways to solve it, but one of the simplest would be to do the following:
+
+Get a list of global variables with the command globals(). This should show you that there is a list called blacklist that will limit the commands you can run. With that knowledge you can craft multiple payloads, but one of the simplest things you can do is call blacklist.clear(). This will wipe clean the blacklist and allow you to run any python command. After this you can run: import os; os.system("cat flag.txt") and get the flag

@@ -1,0 +1,3 @@
+The code generates BrainFuck strings that can be interpreted. If you look at the keys of the "snake_says" dictionary, you will see that each one of them is a BrainFuck interpretable string. Most of them are decoys but one of the strings means flag, and if you print the dictionary value for that string, you will get another brainfuck string that will be the flag.
+  Therefore, adding the following line to the code will print the brainfuck string for the flag:
+  print(snake_says["++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>>++.++++++.-----------.++++++."])

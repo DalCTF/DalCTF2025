@@ -1,0 +1,1 @@
+hashpump -s 'b8e1efbc9584633cf418c626722ae14b077ebda52d769aed051ae6e03f89c5f2' -d 'echo "testing"' -a ';cat flag.txt' -k 26

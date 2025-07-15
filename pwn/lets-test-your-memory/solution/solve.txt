@@ -1,0 +1,19 @@
+First you need to use a decompilation tool to find out what the flag buffer size is (64)
+
+We also need to understand that even though the flag was read into local memory in the readFlag function, 
+fgets actually allocates space on the heap. So even though the flag char array was destroyed, the flag still 
+exists somewhere in memory. Since we reallocate heap memory for our guess, we can use that to allocate the 
+same chunk that the flag is stored in, and use GDB to inspect/find it.
+
+Here's one sequence of GDB inputs that could lead you to the flag:
+	- 2					[Run GDB through the program]
+	- n					[Next instruction]
+	- n					[Next instruction]
+	- n					[Next instruction]
+	- 64					[Entering the size of the flag chunk]
+	- n					[Next instruction]
+	- n 					[Next instruction]
+	- p guess 				[Inspect the guess variable once it's been allocated]
+
+You should be able to see that the guess pointer is pointing at the same chunk, which has the flag 
+dalCTF{im_57i11_h3r3_guy5}

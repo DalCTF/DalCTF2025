@@ -1,0 +1,3 @@
+In this challenge, the web application will test 3 things before allowing you to run system override. First, it will check if you are inside their local network (192.168.100.0/24). Secondly, if you are utilizing the GridSecurityBrowser. And finally if your main language is portuguese. To proceed, you will need to alter the HTTP header values referer, user-agent, and accept-language to bypass the checks. The following curl command could be utilized to retrieve the flag:
+
+curl -X POST -H "Referer: 192.168.100.1" -H "User-Agent: GridSecurityBrowser" -H "Accept-Language: pt-BR" http://localhost:8003/api/firewall/override

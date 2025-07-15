@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pump Control Console</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #111;
+            color: #33ff33;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #33ff33;
+        }
+        pre {
+            background-color: #222;
+            padding: 10px;
+            border: 1px solid #444;
+            overflow-x: auto;
+        }
+        .container {
+            border: 1px solid #33ff33;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            background-color: #222;
+            color: #33ff33;
+            border: 1px solid #444;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        input[type="file"] {
+            background-color: #222;
+            color: #33ff33;
+            border: 1px solid #444;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .file-upload-container {
+            background-color: #222;
+            border: 1px solid #444;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            max-width: 100%;
+            overflow: hidden;   
+        }
+        button {
+            background-color: #222;
+            color: #33ff33;
+            border: 1px solid #33ff33;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #33ff33;
+            color: #222;
+        }
+        .flash-message {
+            background-color: #ff3333;
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>--- Pump Control Console ---</h1>
+    <h2>--- Connection Established.---</h2>
+    <h2>--- Please utilize the master key to hash your commands. ---</h2>
+    <h2>--- Commands with incorrect hashing will NOT be accepted ---</h2>
+
+    <div class="container">
+        <h2>--- Intercepted Transmission Data ---</h2>
+        <p>Key Length: {{ key_length }}</p>
+        <p>Sample Command:</p>
+        <pre>{{ sample_command }}</pre>
+        <p>Signature (MAC): {{ sample_mac }}</p>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <h2>Execute Command</h2>
+        <form action="/execute" method="post" enctype="multipart/form-data">
+            <label for="file">Upload command script:</label>
+            <div class="file-upload-container">
+                <input type="file" id="file" name="file" required>
+            </div>
+            
+            <label for="signature">Signature:</label>
+            <input type="text" id="signature" name="signature" value="{{ sample_mac }}" required>
+            
+            <button type="submit">Execute</button>
+        </form>
+    </div>
+</body>
+</html>

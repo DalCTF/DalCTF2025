@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Letterwall{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-8">
+
+  <form id="loginForm" class="space-y-4">
+    <div>
+      <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+      <input type="text" id="username" name="username" required
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+    </div>
+
+    <div>
+      <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+      <input type="password" id="password" name="password" required
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+    </div>
+
+    <button type="submit"
+      class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+      Login
+    </button>
+  </form>
+
+  <div class="mt-4 text-center">
+    <p class="text-sm text-gray-600">or</p>
+    <button onclick="guestLogin()"
+      class="mt-2 w-full bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+      Continue as Guest
+    </button>
+  </div>
+</div>
+
+<script>
+  async function handleLogin(event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        window.location.href = '/dashboard';
+      } else {
+        alert(data.msg || 'Login failed');
+      }
+    } catch (error) {
+      alert('An error occurred during login');
+    }
+  }
+
+  async function guestLogin() {
+    try {
+      const response = await fetch('/api/auth/guest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'same-origin'
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        window.location.href = '/dashboard';
+      } else {
+        alert('Guest login failed');
+      }
+    } catch (error) {
+      alert('An error occurred during guest login');
+    }
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', handleLogin);
+</script>
+{% endblock %}

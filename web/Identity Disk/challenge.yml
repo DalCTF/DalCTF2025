@@ -1,0 +1,33 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Identity Disk"
+attribution: "Written by Aman"
+category: Web 
+connection_info: http://107.191.48.172:8001
+description: You fall from the sky and land on a game full of neon everywhere, weird motorcycles and a weird disk on your hand. Maybe should identify yourself?
+value: 100
+type: standard
+
+flags:
+    # A static case sensitive flag
+    - dalctf{7ru3_1d3nt17y_d15k_re7r13v3d}
+    - {
+        type: "static",
+        content: "dalctf{7ru3_1d3nt17y_d15k_re7r13v3d}",
+        data: "case_insensitive",
+    }
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

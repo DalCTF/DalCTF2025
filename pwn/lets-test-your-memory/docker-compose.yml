@@ -1,0 +1,6 @@
+services:
+  memory-test:
+    build: .
+    ports:
+      - "7002:1337"
+    restart: unless-stopped

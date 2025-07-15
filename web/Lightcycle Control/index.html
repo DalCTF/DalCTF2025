@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lightcycle Upload Portal</title>
+  <style>
+    body {
+      background-color: #0c0e14;
+      color: #86c0d7;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    .container {
+      background-color: rgba(16, 24, 40, 0.9);
+      border: 1px solid #00a8ff;
+      border-radius: 5px;
+      padding: 40px;
+      box-shadow: 0 0 15px #00a8ff, inset 0 0 15px #00a8ff;
+      width: 350px;
+      position: relative;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00a8ff;
+      text-shadow: 0 0 5px #00a8ff;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    input[type="file"] {
+      background-color: #1e2536;
+      border: 1px solid #00a8ff;
+      border-radius: 3px;
+      color: #fff;
+      padding: 10px;
+      cursor: pointer;
+    }
+    
+    input[type="file"]::-webkit-file-upload-button {
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      margin-right: 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+      transition: background-color 0.3s;
+    }
+    
+    input[type="file"]::-webkit-file-upload-button:hover {
+      background-color: #00a8ff;
+    }
+    
+    button {
+      padding: 12px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    
+    button:hover {
+      background-color: #00a8ff;
+      box-shadow: 0 0 10px #00a8ff;
+    }
+    
+    #response {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      min-height: 20px;
+      color: #0f0;
+    }
+    
+    .grid-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(0deg, transparent 24%, rgba(0, 168, 255, 0.05) 25%, rgba(0, 168, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 168, 255, 0.05) 75%, rgba(0, 168, 255, 0.05) 76%, transparent 77%, transparent),
+                  linear-gradient(90deg, transparent 24%, rgba(0, 168, 255, 0.05) 25%, rgba(0, 168, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 168, 255, 0.05) 75%, rgba(0, 168, 255, 0.05) 76%, transparent 77%, transparent);
+      background-size: 50px 50px;
+      z-index: -1;
+    }
+    
+    .color::after {
+      content: "VHJ5IHVzaW5nIGRldl9wYW5lbC5odG1s"; /* real path */
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="container">
+    <h1>Lightcycle Upload Portal</h1>
+    <form onsubmit="return handleUpload()">
+      <input type="file" id="upload">
+      <button type="submit">Upload Configuration</button>
+    </form>
+    <p id="response"></p>
+  </div>
+
+  <!-- Random notes: Y2xvc2UgYnV0IHRoZSBmbGFnIGlzIG5vdCBoZXJl,  bWF5YmUgY2hlY2sgdGhlIGNzcw==-->
+  <div class="color"></div>
+  
+  <script>
+    function handleUpload() {
+      const fileInput = document.getElementById("upload");
+      if (fileInput.files.length > 0) {
+        document.getElementById("response").innerText = "Upload failed. Incorrect File!";
+      } else {
+        document.getElementById("response").innerText = "No file selected.";
+      }
+      return false; // Prevent actual form submission
+    }
+  </script>
+</body>
+</html>

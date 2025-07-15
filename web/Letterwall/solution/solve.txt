@@ -1,0 +1,12 @@
+# Letterwall Web Application
+
+
+Topics: Misc,Web
+
+Walkthrough:
+ - On the main page, login as a guest
+ - You will be presented with a wall of text that is constantly changing
+ - Find the words that are not periodically changing and read the phrase
+ - Change your guest JWT for an admin one by replacing the username
+ - Reload the wall of text page with your new JWT
+ - Find the words that are not periodically changing and read the flag

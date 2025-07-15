@@ -1,0 +1,13 @@
+- Player would try to run the exec and see the output stating that the engine is failing, without the source file, they are expected to open up a decompiler to get the original source
+
+- Upon analysing, they will realize:
+	+ The last function being call in main the the function that's will get them the flag, because it's decoding the encoded flag using XOR
+	+ The first function is a checker for all the legal hexes that they could use.
+
+- They will also realize that in function that get them the flag, the key being used to decode is being XORed by the first byte of a function with 0x74. 
+
+- That function is also the second function being call in main(), and the ASM equivalent of it is JZ engine_fail. 
+
+- They will refer to the legal hexes and realize that the hex 0xEB is the opcode for the JMP function in ASM. And patching JZ to JMP will get them to JMP anywhere they want, in particular, they could jump to the print_flag() function.
+
+- Once they successfully patched the JZ to JMP, the correct key will be use to decode the flag.

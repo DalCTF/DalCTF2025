@@ -1,0 +1,6 @@
+services:
+  devs-map:
+    build: .
+    ports:
+      - "7001:1337"
+    restart: unless-stopped

@@ -1,0 +1,9 @@
+- The player first should put this into a decompiler.
+
+- validate() then call a bunch of check function, the checkFlag() suppose to be a decoy function. The correct function they should check is checkXOR().
+
+- They will realize checkXOR() then check only even indexes in the key[] array, which contain the encoded hexes of the flag.
+
+- Then the player will take every value in the even indexes, XOR it with 0x55, that would give them the original flag.
+
+

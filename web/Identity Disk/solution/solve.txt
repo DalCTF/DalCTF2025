@@ -1,0 +1,1 @@
+After oppening the website, if you inspect the page you will find the code utilized for the verification of password. You will also find two hex strings that correspond to the answer you get when providing specific passwords. One of the two is just a decoy but the other one, after being decoded, will provide the flag for the challenge.

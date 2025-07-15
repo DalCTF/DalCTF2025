@@ -1,0 +1,37 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Movie Reviews"
+attribution: "Written by Potatonator"
+category: Web
+description: Ok, this is weird. In a remote area of the grid you find what looks like a theather. But going inside you see a ... movie reviews blog? It seems that the developers of the game left up some old code from a forum for discussing movies. Create a login to it and see if you find something interesting
+connection_info: http://107.191.48.172:8005/
+value: 500
+type: standard
+
+flags:
+    # A static case sensitive flag
+    - dalctf{n3v3r_g0_4g41n57_4_51c1l14n_wh3n_d34th_15_0n_7h3_l1n3_84729}
+    - {
+        type: "static",
+        content: "dalctf{n3v3r_g0_4g41n57_4_51c1l14n_wh3n_d34th_15_0n_7h3_l1n3_84729}",
+        data: "case_insensitive",
+    }
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+
+files:
+    - dist/app.py
+
+
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

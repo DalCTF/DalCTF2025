@@ -1,0 +1,3 @@
+Overflow from the buffer into the lock variable. The following string would work:
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAA1337

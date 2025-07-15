@@ -1,0 +1,38 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "The Armoury"
+attribution: "Written by kvasir"
+category: Pwn
+connection_info: nc 107.191.48.172 7004
+description: Yes! You just got in to the armoury facility, where the secret weapon you've been looking all allong lies. You go in, turn on the light, and finds a huge neon cannon. This must be it! You inspect it, looking for some clues from the devs on how to exit the game, but you get distracted by the cannon itself. I got see what this thing can do, you think to yourself. You jump in the command panel, boot the cannon up and.... what? All you find is a mini battleship game? All that the super-secret weapon does is allow you to choose a spot and hope to hit a battleship from a bot? No, there's got to be something different here! 
+value: 500
+type: standard
+
+flags:
+    # A static case sensitive flag
+    - dalctf{c0m3_0n_y0u_gunn3r5}
+    - {
+        type: "static",
+        content: "dalctf{c0m3_0n_y0u_gunn3r5}",
+        data: "case_insensitive",
+    }
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+
+files:
+  - dist/main.c
+  - dist/armoury
+  - dist/libc.so.6
+
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

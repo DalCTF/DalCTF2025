@@ -1,0 +1,11 @@
+services:
+  pump-console:
+    build: .
+    ports:
+      - "6001:1337"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+      - FLASK_DEBUG=0
+    command: gunicorn --bind 0.0.0.0:1337 --workers 4 --threads 2 app:app
+    restart: unless-stopped

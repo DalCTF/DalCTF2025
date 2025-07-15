@@ -1,0 +1,3 @@
+## Description
+
+Yes! You just got in to the armoury facility, where the secret weapon you've been looking all allong lies. You go in, turn on the light, and finds a huge neon cannon. This must be it! You inspect it, looking for some clues from the devs on how to exit the game, but you get distracted by the cannon itself. I got see what this thing can do, you think to yourself. You jump in the command panel, boot the cannon up and.... what? All you find is a mini battleship game? All that the super-secret weapon does is allow you to choose a spot and hope to hit a battleship from a bot? No, there's got to be something different here!

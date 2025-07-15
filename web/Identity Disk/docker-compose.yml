@@ -1,0 +1,7 @@
+version: '3'
+services:
+  sector1:
+    build: .
+    ports:
+      - "8001:80"
+    restart: unless-stopped

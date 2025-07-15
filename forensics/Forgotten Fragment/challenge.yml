@@ -1,0 +1,20 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Forgotten Fragment"
+author: "ds_305"
+category: Forensics
+description: You’ve recovered a raw memory dump file containing a mix of binary data and hidden information left by previous users. Somewhere inside this noisy data lies a secret flag. Your task is to analyze the file, uncover any readable content, and extract the flag.
+attribution: Written by ds_305
+value: 100
+type: standard
+flags:
+    - dalctf{exit_c0de_sh4red_in_log}
+topics:
+    - memory forensics
+
+files:
+    - dist/system_dump_001.bin
+
+version: "0.1"

@@ -1,0 +1,27 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Forensics/What Encryption"
+author: "lorg"
+category: Forensics
+description: You heard a rumour that something shady was happening, so you decided to capture some traffic on the network. Maybe you caught something...
+attribution: Written by lorg
+value: 100
+type: standard
+
+# Flags specify answers that your challenge use. You should generally provide at least one.
+# Can be removed if unused
+# Accepts strings or dictionaries of CTFd API data
+flags:
+    # A static case sensitive flag
+    - dalctf{pr1vat3_k3y_n0t_VeRy_prIva4te}
+topics:
+    - pcap forensics
+
+files:
+    - dist/WhatEncryption.pcap
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

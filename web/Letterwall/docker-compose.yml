@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8004:5200"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+      - FLASK_DEBUG=0
+    command: gunicorn --bind 0.0.0.0:5200 --workers 4 --threads 2 app:app
+    restart: unless-stopped

@@ -1,0 +1,3 @@
+The DalCTF instagram got this weird DM the other day, can you find out more about this guy? Maybe we'll get him to make our pizzas next time...
+
+**Flag format:** Normal dalctf format, `dalctf{example}`
